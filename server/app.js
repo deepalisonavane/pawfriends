@@ -4,11 +4,11 @@ const express = require("express");
 const app = express();
 dotenv.config({path:'./config.env'});
 require('./db/conn')
+app.use(express.json());
 
-app.use(require('./routes/auth'))
+app.use( require("./routes/auth"));
 const User =require('./models/userschema');
 const PORT = process.env.PORT;
-
 const middleware = (req,res,next)=>{
     console.log("middleware");
     next();
@@ -20,7 +20,7 @@ app.get('/', (req,res)=>{
 
 });
 
-app.get('/signin',middleware, (req,res)=>{
+app.get('/signin', (req,res)=>{
     res.send("signinn");
 
 });
