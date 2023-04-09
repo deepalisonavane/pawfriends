@@ -15,10 +15,7 @@ const middleware = (req,res,next)=>{
 }
 
 
-app.get('/', (req,res)=>{
-    res.send("hellloo");
 
-});
 
 app.get('/signin', (req,res)=>{
     res.send("signinn");
