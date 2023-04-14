@@ -5,6 +5,8 @@ const jwt = require("jsonwebtoken")
 require("../db/conn");
 const User = require("../models/userschema");
 const Volunteer = require("../models/volunteer");
+const Adoption = require("../models/adoption");
+
 
 
 router.get("/", (req, res) => {
@@ -79,7 +81,22 @@ router.post("/volunteer",async(req,res)=>{
 
 })
 
-  
+router.post("/adoption",async(req,res)=>{
+  const { name, email, phone, address,type,  } = req.body;
+  try {
+    const adoption = new Adoption({ name, email, phone, address, type });
+    console.log(adoption)
+    const adopt = await adoption.save();
+   
+      // const donationrec = await food.save();
+      // res.status(201).render("instruction");
+      res.status(201).json({ message: "user registered suceessfully" });
+      console.log(adopt);
+} catch (error) {
+  res.status(400).send("error");  
+}
+
+})
 
 
 module.exports = router;
