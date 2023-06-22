@@ -18,6 +18,7 @@ const Volunteer = require("./models/volunteer.js");
 const Adoption = require("./models/adoption");
 const Service = require("./models/services");
 const Sterilization = require("./models/sterilization")
+const Contact = require("./models/contact")
 
 const PORT = process.env.PORT;
 const middleware = (req, res, next) => {
@@ -46,6 +47,10 @@ app.get("/service", (req, res) => {
 
 app.get("/sterilization", (req, res) => {
   res.send("sterilization");
+});
+
+app.get("/contact", (req, res) => {
+  res.send("contact");
 });
 
 app.get('/payment', require('./routes/auth'));

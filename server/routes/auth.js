@@ -8,7 +8,8 @@ const User = require("../models/userschema");
 const Volunteer = require("../models/volunteer");
 const Adoption = require("../models/adoption");
 const Service = require("../models/services");
-const Sterilization = require("../models/sterilization")
+const Sterilization = require("../models/sterilization");
+const Contact = require("../models/contact")
 
 
 router.get("/", (req, res) => {
@@ -196,6 +197,19 @@ router.post("/sterilization", async (req, res) => {
     const sterilize = await sterlize.save();
     res.status(201).json({ message: "sterilizationnn" });
     console.log(sterilize);
+  } catch (error) {
+    res.status(400).send("error");
+  }
+});
+
+router.post("/contact", async (req, res) => {
+  const { fname, lname,email, phone, message } = req.body;
+  try {
+    const contact = new Contact({ fname,lname, email, phone, message });
+    console.log(contact);
+    const contactus = await contact.save();
+    res.status(201).json({ message: "contactus" });
+    console.log(contactus);
   } catch (error) {
     res.status(400).send("error");
   }
