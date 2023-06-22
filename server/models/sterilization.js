@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const adoptionSchema = mongoose.Schema({
+const sterilizationSchema = mongoose.Schema({
   name: {
     type: String,
     reuired: true,
@@ -9,20 +9,19 @@ const adoptionSchema = mongoose.Schema({
     type: String,
     reuired: true,
   },
-  address: {
-    type: String,
-    reuired: true,
-  },
+
   phone: {
     type: Number,
     reuired: true,
   },
-  type: {
-    adoption: {
+  service: {
       type: String,
-    },
+
   },
+  animal:{
+    type :String,
+  }
 });
 
-const Adoption = mongoose.model("ADOPTION", adoptionSchema);
-module.exports = Adoption;
+const Sterilization = mongoose.model("STERILIZATION", sterilizationSchema);
+module.exports = Sterilization;

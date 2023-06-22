@@ -17,13 +17,13 @@ const User = require("./models/userschema");
 const Volunteer = require("./models/volunteer.js");
 const Adoption = require("./models/adoption");
 const Service = require("./models/services");
+const Sterilization = require("./models/sterilization")
 
 const PORT = process.env.PORT;
 const middleware = (req, res, next) => {
   console.log("middleware");
   next();
 };
-require("../")
 app.get("/signin", (req, res) => {
   res.send("signinn");
 });
@@ -44,6 +44,9 @@ app.get("/service", (req, res) => {
   res.send("service");
 });
 
+app.get("/sterilization", (req, res) => {
+  res.send("sterilization");
+});
 
 app.get('/payment', require('./routes/auth'));
 

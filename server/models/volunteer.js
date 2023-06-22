@@ -3,11 +3,15 @@ const mongoose = require("mongoose");
 const volunteerSchema = mongoose.Schema({
   name: {
     type: String,
-    reuired: true,
+    require: true,
+  },
+  age:{
+    type: Number,
+    require: true,
   },
   email: {
     type: String,
-    reuired: true,
+    require: true,
   },
   address: {
     type: String,
@@ -17,6 +21,7 @@ const volunteerSchema = mongoose.Schema({
     type: Number,
     reuired: true,
   },
+
 });
 
 const Volunteer = mongoose.model("VOLUNTEER", volunteerSchema);

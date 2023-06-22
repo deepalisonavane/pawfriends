@@ -7,7 +7,9 @@ require("../db/conn");
 const User = require("../models/userschema");
 const Volunteer = require("../models/volunteer");
 const Adoption = require("../models/adoption");
-const Service = require("../models/services")
+const Service = require("../models/services");
+const Sterilization = require("../models/sterilization")
+
 
 router.get("/", (req, res) => {
   res.send("authhh");
@@ -69,10 +71,14 @@ router.post("/volunteer", async (req, res) => {
   try {
     const volunteer = new Volunteer({
       name,
+      age,
       email,
+      address,
       phone,
-      password,
-      cpassword,
+      contribute,
+      availability
+      
+
     });
     const voldata = await volunteer.save();
 
@@ -182,7 +188,18 @@ router.post('/success', async (req, res) => {
   }
 });
 
-
+router.post("/sterilization", async (req, res) => {
+  const { name, email, phone, animal, service } = req.body;
+  try {
+    const sterlize = new Sterilization({ name, email, phone, animal, service });
+    console.log(sterlize);
+    const sterilize = await sterlize.save();
+    res.status(201).json({ message: "sterilizationnn" });
+    console.log(sterilize);
+  } catch (error) {
+    res.status(400).send("error");
+  }
+});
 
 
 
